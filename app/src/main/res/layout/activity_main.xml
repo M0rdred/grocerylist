@@ -24,4 +24,9 @@
 			android:layout_below="@+id/app_title"
 			android:text="Your grocery lists" />
 
+	<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/activityMain_recyclerView"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent" />
+
 </RelativeLayout>
