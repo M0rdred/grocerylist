@@ -1,0 +1,61 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "3:3373514866274036129",
+      "lastPropertyId": "4:326922866138850005",
+      "name": "GroceryItemEntry",
+      "properties": [
+        {
+          "id": "1:4900915916462725454",
+          "name": "id",
+          "type": 6,
+          "flags": 3
+        },
+        {
+          "id": "2:5289450174426941536",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "3:3851844852824712288",
+          "name": "quantity",
+          "type": 5,
+          "flags": 2
+        },
+        {
+          "id": "4:326922866138850005",
+          "name": "claimed",
+          "type": 1,
+          "flags": 4
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "3:3373514866274036129",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [
+    8810258401810028331,
+    8563594489976718939
+  ],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [
+    3371026986345348279,
+    8437974165128513328,
+    3051867021267003438,
+    4411230032997672511,
+    932143476015615857,
+    468650611350133674,
+    7395632558054290412,
+    8596714567602036655
+  ],
+  "retiredRelationUids": [],
+  "version": 1
+}
