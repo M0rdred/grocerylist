@@ -33,9 +33,28 @@
         }
       ],
       "relations": []
+    },
+    {
+      "id": "4:528315049261769873",
+      "lastPropertyId": "2:3563099908225614189",
+      "name": "GroceryListEntry",
+      "properties": [
+        {
+          "id": "1:5772956204438508917",
+          "name": "id",
+          "type": 6,
+          "flags": 3
+        },
+        {
+          "id": "2:3563099908225614189",
+          "name": "name",
+          "type": 9
+        }
+      ],
+      "relations": []
     }
   ],
-  "lastEntityId": "3:3373514866274036129",
+  "lastEntityId": "4:528315049261769873",
   "lastIndexId": "0:0",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
