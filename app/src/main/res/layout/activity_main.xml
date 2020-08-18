@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+	<TextView
+			android:id="@+id/app_title"
+			style="@style/AppTheme"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_centerHorizontal="true"
+			android:background="@color/colorPrimary"
+			android:padding="8dp"
+			android:text="@string/app_title"
+			android:textAlignment="center"
+			android:textColor="@color/white"
+			android:textSize="20sp"
+			android:textStyle="bold" />
+
+	<TextView
+			android:id="@+id/text_welcome"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/app_title"
+			android:text="Your grocery lists" />
+
+</RelativeLayout>
