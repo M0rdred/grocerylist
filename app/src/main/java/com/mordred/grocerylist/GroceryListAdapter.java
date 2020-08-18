@@ -29,7 +29,7 @@ public class GroceryListAdapter extends RecyclerView.Adapter<GroceryListViewHold
 	@Override
 	public GroceryListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 		LayoutInflater inflater = LayoutInflater.from(this.context);
-		View view = inflater.inflate(R.layout.layout_groceryList, parent, false);
+		View view = inflater.inflate(R.layout.layout_grocerylist, parent, false);
 
 		return new GroceryListViewHolder(view);
 	}
@@ -59,4 +59,6 @@ public class GroceryListAdapter extends RecyclerView.Adapter<GroceryListViewHold
 		}
 
 	}
+
+	public void setData(List<GroceryListEntry> groceryList) {this.groceryList = groceryList;}
 }
