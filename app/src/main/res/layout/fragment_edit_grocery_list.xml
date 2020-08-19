@@ -1,11 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 
 	<TextView
+			android:id="@+id/fragEditGroceryList_editTextName"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignParentTop="true"
+			android:hint="@string/product_name"
+			android:visibility="gone" />
+
+	<TextView
+			android:id="@+id/fragEditGroceryList_textAmount"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/fragEditGroceryList_editTextName"
+			android:layout_centerHorizontal="true"
+			android:layout_margin="8dp"
+			android:text="@string/default_amount"
+			android:textSize="50sp"
+			android:visibility="gone" />
+
+	<Button
+			android:id="@+id/fragEditGroceryList_buttonDecrease"
+			android:layout_width="@dimen/amount_button_width"
+			android:layout_height="wrap_content"
+			android:layout_alignTop="@id/fragEditGroceryList_textAmount"
+			android:layout_alignBottom="@id/fragEditGroceryList_textAmount"
+			android:layout_toStartOf="@id/fragEditGroceryList_textAmount"
+			android:text="@string/button_decrease"
+			android:visibility="gone" />
+
+	<Button
+			android:id="@+id/fragEditGroceryList_buttonIncrease"
+			android:layout_width="@dimen/amount_button_width"
+			android:layout_height="wrap_content"
+			android:layout_alignTop="@id/fragEditGroceryList_textAmount"
+			android:layout_alignBottom="@id/fragEditGroceryList_textAmount"
+			android:layout_toEndOf="@id/fragEditGroceryList_textAmount"
+			android:text="@string/button_increase"
+			android:visibility="gone" />
+
+	<Button
+			android:id="@+id/fragEditGroceryList_buttonAdd"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignTop="@id/fragEditGroceryList_textAmount"
+			android:layout_alignBottom="@id/fragEditGroceryList_textAmount"
+			android:layout_margin="5dp"
+			android:layout_toEndOf="@id/fragEditGroceryList_buttonIncrease"
+			android:text="@string/button_add"
+			android:visibility="gone" />
+
+	<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/fragEditGroceryList_recyclerView"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:text="Hello" />
-
-</FrameLayout>
+			android:layout_below="@+id/fragEditGroceryList_textAmount" />
+</RelativeLayout>

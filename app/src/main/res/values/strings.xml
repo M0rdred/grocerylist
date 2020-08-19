@@ -1,0 +1,18 @@
+<resources>
+	<string name="app_name">ShoppingList</string>
+	<string name="app_title">Shopping List</string>
+	<!-- Strings used for fragments for navigation -->
+	<string name="next">Next</string>
+	<string name="previous">Previous</string>
+
+	<string name="action_settings">Settings</string>
+
+	<!--	Bundle keys-->
+	<string name="bundle_key_grocery_list_id" translatable="false">groceryListId</string>
+	<string name="product_name">Product name</string>
+	<string name="default_amount">0</string>
+	<string name="button_decrease">-</string>
+	<string name="button_increase">+</string>
+	<string name="button_add">Add</string>
+
+</resources>
