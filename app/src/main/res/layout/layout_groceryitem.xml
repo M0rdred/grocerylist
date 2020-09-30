@@ -20,4 +20,21 @@
 			android:layout_height="wrap_content"
 			android:layout_marginStart="8dp"
 			android:textSize="30sp" />
+
+	<ImageView
+			android:id="@+id/layoutGroceryItem_buttonClaim"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_vertical"
+			android:layout_marginStart="8dp"
+			android:src="@drawable/ic_check_green" />
+
+	<ImageView
+			android:id="@+id/layoutGroceryItem_buttonUnclaim"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_vertical"
+			android:layout_marginStart="8dp"
+			android:src="@drawable/ic_delete"
+			android:visibility="gone" />
 </LinearLayout>

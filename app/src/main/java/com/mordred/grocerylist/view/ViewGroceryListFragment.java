@@ -28,7 +28,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
-public class ViewGroceryListFragment extends Fragment {
+public class ViewGroceryListFragment extends Fragment implements GroceryItemClaimChangeListener {
 
 	public static final String TAG = "ViewGroceryListFragment";
 
@@ -87,6 +87,8 @@ public class ViewGroceryListFragment extends Fragment {
 				.getGroceryItemList(this.groceryListId)
 				.observe(this.getViewLifecycleOwner(),
 						 groceryItemEntries -> {
+								Collections.sort(groceryItemEntries, this::compareGroceryItems);
+
 								this.groceryItemAdapter.setData(groceryItemEntries);
 								this.groceryItemAdapter.notifyDataSetChanged();
 						}
@@ -95,4 +97,26 @@ public class ViewGroceryListFragment extends Fragment {
 	}
 
 
+
+	@Override
+	public void claimItem(GroceryItemEntry item) {
+		item.setClaimed(true);
+		this.viewModel.saveGroceryItem(item);
+	}
+
+	@Override
+	public void unclaimItem(GroceryItemEntry item) {
+		item.setClaimed(false);
+		this.viewModel.saveGroceryItem(item);
+	}
+
+	private int compareGroceryItems(GroceryItemEntry item1, GroceryItemEntry item2) {
+		if (item1.isClaimed() == item2.isClaimed()) {
+			return StringUtils.compareIgnoreCase(item1.getName(), item2.getName());
+		} else if (item1.isClaimed()) {
+			return 1;
+		} else {
+			return -1;
+		}
+	}
 }

@@ -50,6 +50,22 @@ public class GroceryItemAdapter extends RecyclerView.Adapter<GroceryItemViewHold
 			holder.quantityText.setText(String.valueOf(groceryItem.getQuantity()));
 			holder.itemView.setTag(groceryItem.getId());
 
+			holder.buttonClaim.setOnClickListener(
+					v -> this.stateChangeListener.claimItem(groceryItem));
+			holder.buttonUnclaim.setOnClickListener(
+					v -> this.stateChangeListener.unclaimItem(groceryItem));
+
+			if (groceryItem.isClaimed()) {
+				holder.buttonClaim.setVisibility(View.GONE);
+				holder.buttonUnclaim.setVisibility(View.VISIBLE);
+				holder.nameText.setAlpha(0.5F);
+				holder.quantityText.setAlpha(0.5F);
+			} else {
+				holder.buttonClaim.setVisibility(View.VISIBLE);
+				holder.buttonUnclaim.setVisibility(View.GONE);
+				holder.nameText.setAlpha(1F);
+				holder.quantityText.setAlpha(1F);
+			}
 
 			if (position % 2 == 1) {
 				holder.baseLayout.setBackgroundColor(
@@ -66,6 +82,8 @@ public class GroceryItemAdapter extends RecyclerView.Adapter<GroceryItemViewHold
 		public LinearLayout baseLayout;
 		public TextView nameText;
 		public TextView quantityText;
+		public ImageView buttonClaim;
+		public ImageView buttonUnclaim;
 
 		public GroceryItemViewHolder(@NonNull View itemView) {
 			super(itemView);
@@ -73,6 +91,8 @@ public class GroceryItemAdapter extends RecyclerView.Adapter<GroceryItemViewHold
 			this.baseLayout = itemView.findViewById(R.id.layoutGroceryItem_layoutBase);
 			this.nameText = itemView.findViewById(R.id.layoutGroceryItem_textViewName);
 			this.quantityText = itemView.findViewById(R.id.layoutGroceryItem_textViewQuantity);
+			this.buttonClaim = itemView.findViewById(R.id.layoutGroceryItem_buttonClaim);
+			this.buttonUnclaim = itemView.findViewById(R.id.layoutGroceryItem_buttonUnclaim);
 		}
 
 	}
@@ -81,5 +101,11 @@ public class GroceryItemAdapter extends RecyclerView.Adapter<GroceryItemViewHold
 			List<GroceryItemEntry> groceryItemList
 	) {this.groceryItemList = groceryItemList;}
 
+	public interface GroceryItemClaimChangeListener {
+
+		void claimItem(GroceryItemEntry item);
+
+		void unclaimItem(GroceryItemEntry item);
+	}
 
 }
