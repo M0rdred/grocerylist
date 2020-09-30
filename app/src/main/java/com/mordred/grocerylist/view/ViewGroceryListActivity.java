@@ -43,4 +43,24 @@ public class ViewGroceryListActivity extends AppCompatActivity {
 		transaction.commit();
 	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		this.getMenuInflater().inflate(R.menu.view_list_item, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+		if (item.getItemId() == R.id.edit_list) {
+			Intent intent = new Intent(this, EditGroceryListActivity.class);
+			intent.putExtra(
+					this.getString(R.string.bundle_key_grocery_list_id), this.groceryListId);
+
+			this.startActivity(intent);
+			return true;
+		} else {
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
 }
