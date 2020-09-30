@@ -21,6 +21,9 @@ public class ViewGroceryListViewModel extends ViewModel {
 				this.groceryItemBox.query().equal(GroceryItemEntry_.listId, groceryListId).build());
 	}
 
+	public boolean removeGroceryItem(long itemId) {
+		return this.groceryItemBox.remove(itemId);
+	}
 
 	public long saveGroceryItem(GroceryItemEntry itemEntry) {
 		return this.groceryItemBox.put(itemEntry);

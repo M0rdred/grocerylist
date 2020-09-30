@@ -26,4 +26,8 @@ public class GroceryListViewModel extends ViewModel {
 	public ObjectBoxLiveData<GroceryListEntry> getGroceryList() {
 		return this.groceryList;
 	}
+
+	public boolean removeGroceryList(long id) {
+		return this.groceryListBox.remove(id);
+	}
 }

@@ -69,6 +69,7 @@ public class ViewGroceryListFragment extends Fragment implements GroceryItemClai
 		this.textViewListName = fragmentView.findViewById(
 				R.id.fragEditGroceryList_textViewListName);
 
+		this.createSliding();
 	}
 
 	@Override
@@ -96,7 +97,28 @@ public class ViewGroceryListFragment extends Fragment implements GroceryItemClai
 		//@formatter:on
 	}
 
+	private void createSliding() {
+		new ItemTouchHelper(new SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+			@Override
+			public boolean onMove(
+					@NonNull RecyclerView recyclerView, @NonNull ViewHolder viewHolder,
+					@NonNull ViewHolder target
+			) {
+				return false;
+			}
 
+			@Override
+			public void onSwiped(
+					@NonNull ViewHolder viewHolder, int direction
+			) {
+				ViewGroceryListFragment.this.removeListEntry((Long) viewHolder.itemView.getTag());
+			}
+		}).attachToRecyclerView(this.recyclerView);
+	}
+
+	private void removeListEntry(long id) {
+		this.viewModel.removeGroceryItem(id);
+	}
 
 	@Override
 	public void claimItem(GroceryItemEntry item) {
