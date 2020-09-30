@@ -7,23 +7,24 @@ import io.objectbox.BoxStore;
 
 public class ObjectBoxStore {
 
+	public static final Long DEFAULT_ENTITY_ID = 0L;
+
 	private static BoxStore boxStore;
 
 	public static void initStore(Context context) {
-		if (boxStore != null) {
-			throw new UnsupportedOperationException("BoxStore already initialized");
+		if (ObjectBoxStore.boxStore == null) {
+			ObjectBoxStore.boxStore = MyObjectBox.builder().androidContext(
+					context.getApplicationContext()).build();
 		}
-
-		boxStore = MyObjectBox.builder().androidContext(context.getApplicationContext()).build();
 	}
 
 	public static BoxStore getBoxStore() {
-		if (boxStore == null) {
+		if (ObjectBoxStore.boxStore == null) {
 			throw new UnsupportedOperationException(
 					"BoxStore not yet initialized. Call initStore() first");
 		}
 
-		return boxStore;
+		return ObjectBoxStore.boxStore;
 	}
 
 }

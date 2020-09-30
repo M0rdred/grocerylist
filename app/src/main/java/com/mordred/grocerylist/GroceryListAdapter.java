@@ -6,10 +6,12 @@ import org.apache.commons.collections4.CollectionUtils;
 
 import com.mordred.grocerylist.GroceryListAdapter.GroceryListViewHolder;
 import com.mordred.grocerylist.model.GroceryListEntry;
+import com.mordred.grocerylist.model.db.ObjectBoxStore;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -20,6 +22,7 @@ public class GroceryListAdapter extends RecyclerView.Adapter<GroceryListViewHold
 
 	private Context context;
 	private List<GroceryListEntry> groceryList;
+	private OnClickListener groceryListClickListener;
 
 	public GroceryListAdapter(Context context) {
 		this.context = context;
@@ -31,6 +34,10 @@ public class GroceryListAdapter extends RecyclerView.Adapter<GroceryListViewHold
 		LayoutInflater inflater = LayoutInflater.from(this.context);
 		View view = inflater.inflate(R.layout.layout_grocerylist, parent, false);
 
+		if (this.groceryListClickListener != null) {
+			view.setOnClickListener(this.groceryListClickListener);
+		}
+
 		return new GroceryListViewHolder(view);
 	}
 
@@ -39,7 +46,9 @@ public class GroceryListAdapter extends RecyclerView.Adapter<GroceryListViewHold
 			@NonNull GroceryListViewHolder holder, int position
 	) {
 		if (CollectionUtils.isNotEmpty(this.groceryList)) {
-			holder.nameText.setText(this.groceryList.get(position).getName());
+			GroceryListEntry groceryList = this.groceryList.get(position);
+			holder.nameText.setText(groceryList.getName());
+			holder.itemView.setTag(groceryList.getId());
 		}
 	}
 
@@ -61,4 +70,16 @@ public class GroceryListAdapter extends RecyclerView.Adapter<GroceryListViewHold
 	}
 
 	public void setData(List<GroceryListEntry> groceryList) {this.groceryList = groceryList;}
+
+	public void setOnClickListener(
+			OnClickListener onClickListener
+	) { this.groceryListClickListener = onClickListener; }
+
+	public long getGroceryListId(int position) {
+		if (CollectionUtils.isEmpty(this.groceryList)) {
+			return ObjectBoxStore.DEFAULT_ENTITY_ID;
+		} else {
+			return this.groceryList.get(position).getId();
+		}
+	}
 }
