@@ -8,39 +8,28 @@ public class GroceryItemEntry {
 
 	@Id
 	private Long id;
+	private Long listId;
 	private String name;
 	private Integer quantity;
 	private boolean claimed;
 
-	public Long getId() {
-		return id;
-	}
+	public Long getId()                       { return this.id; }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+	public void setId(Long id)                { this.id = id; }
 
-	public String getName() {
-		return name;
-	}
+	public Long getListId()                   { return this.listId; }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+	public void setListId(Long listId)        { this.listId = listId; }
 
-	public Integer getQuantity() {
-		return quantity;
-	}
+	public String getName()                   { return this.name; }
 
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
+	public void setName(String name)          { this.name = name; }
 
-	public boolean isClaimed() {
-		return claimed;
-	}
+	public Integer getQuantity()              { return this.quantity; }
 
-	public void setClaimed(boolean claimed) {
-		this.claimed = claimed;
-	}
+	public void setQuantity(Integer quantity) { this.quantity = quantity; }
+
+	public boolean isClaimed()                { return this.claimed; }
+
+	public void setClaimed(boolean claimed)   { this.claimed = claimed; }
 }

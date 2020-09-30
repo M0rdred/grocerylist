@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "3:3373514866274036129",
-      "lastPropertyId": "4:326922866138850005",
+      "lastPropertyId": "5:8393265606878065637",
       "name": "GroceryItemEntry",
       "properties": [
         {
@@ -30,6 +30,12 @@
           "name": "claimed",
           "type": 1,
           "flags": 4
+        },
+        {
+          "id": "5:8393265606878065637",
+          "name": "listId",
+          "type": 6,
+          "flags": 2
         }
       ],
       "relations": []
