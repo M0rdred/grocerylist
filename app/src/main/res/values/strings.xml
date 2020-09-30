@@ -9,10 +9,12 @@
 
 	<!--	Bundle keys-->
 	<string name="bundle_key_grocery_list_id" translatable="false">groceryListId</string>
+	<string name="list_name">List name</string>
 	<string name="product_name">Product name</string>
 	<string name="default_amount">0</string>
 	<string name="button_decrease">-</string>
 	<string name="button_increase">+</string>
 	<string name="button_add">Add</string>
+	<string name="edit_list">Edit</string>
 
 </resources>

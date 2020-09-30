@@ -3,11 +3,29 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 
-	<TextView
-			android:id="@+id/fragEditGroceryList_editTextName"
+	<EditText
+			android:id="@+id/fragEditGroceryList_editTextListName"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_alignParentTop="true"
+			android:layout_marginVertical="8dp"
+			android:hint="@string/list_name"
+			android:visibility="gone" />
+
+	<TextView
+			android:id="@+id/fragEditGroceryList_textViewListName"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/fragEditGroceryList_editTextListName"
+			android:layout_marginVertical="8dp"
+			android:hint="@string/list_name" />
+
+	<EditText
+			android:id="@+id/fragEditGroceryList_editTextProductName"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/fragEditGroceryList_editTextListName"
+			android:layout_marginVertical="8dp"
 			android:hint="@string/product_name"
 			android:visibility="gone" />
 
@@ -15,7 +33,7 @@
 			android:id="@+id/fragEditGroceryList_textAmount"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_below="@id/fragEditGroceryList_editTextName"
+			android:layout_below="@id/fragEditGroceryList_editTextProductName"
 			android:layout_centerHorizontal="true"
 			android:layout_margin="8dp"
 			android:text="@string/default_amount"

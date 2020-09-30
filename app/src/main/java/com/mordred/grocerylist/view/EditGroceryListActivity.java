@@ -1,6 +1,7 @@
 package com.mordred.grocerylist.view;
 
 import com.mordred.grocerylist.R;
+import com.mordred.grocerylist.model.db.ObjectBoxStore;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,8 +20,19 @@ public class EditGroceryListActivity extends AppCompatActivity {
 		Fragment fragment = manager.findFragmentByTag(EditGroceryListFragment.TAG);
 
 		if (fragment == null) {
-			fragment = new EditGroceryListFragment();
+			fragment = EditGroceryListFragment.newInstance();
 		}
+
+		Bundle bundle = new Bundle();
+
+		String bundleKey = this.getString(R.string.bundle_key_grocery_list_id);
+
+		bundle.putLong(
+				bundleKey,
+				this.getIntent().getLongExtra(bundleKey, ObjectBoxStore.DEFAULT_ENTITY_ID)
+		);
+
+		fragment.setArguments(bundle);
 
 		FragmentTransaction transaction = manager.beginTransaction();
 		transaction.replace(R.id.activityEditGroceryList_root, fragment);
