@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.mordred.grocerylist.GroceryItemAdapter;
 import com.mordred.grocerylist.GroceryItemAdapter.GroceryItemClaimChangeListener;
+import com.mordred.grocerylist.GroceryItemNameAdapter;
 import com.mordred.grocerylist.R;
 import com.mordred.grocerylist.model.GroceryItemEntry;
 import com.mordred.grocerylist.model.GroceryListEntry;
@@ -33,6 +34,7 @@ public class ViewGroceryListFragment extends Fragment implements GroceryItemClai
 	public static final String TAG = "ViewGroceryListFragment";
 
 	protected GroceryItemAdapter groceryItemAdapter;
+	protected GroceryItemNameAdapter groceryItemNameAdapter;
 
 	protected long groceryListId;
 

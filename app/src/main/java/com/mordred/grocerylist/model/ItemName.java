@@ -2,17 +2,25 @@ package com.mordred.grocerylist.model;
 
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
+import io.objectbox.annotation.Unique;
 
 @Entity
-public class GroceryListEntry {
+public class ItemName {
 
 	@Id
-	private Long id;
+	private long id;
+	@Unique
 	private String name;
 
-	public Long getId() { return this.id; }
+	public ItemName(String name) {
+		this.name = name;
+	}
 
-	public void setId(Long id) {
+	public long getId() {
+		return this.id;
+	}
+
+	public void setId(long id) {
 		this.id = id;
 	}
 

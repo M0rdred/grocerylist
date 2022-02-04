@@ -1,5 +1,7 @@
 package com.mordred.grocerylist.view;
 
+import java.util.ArrayList;
+
 import org.apache.commons.lang3.StringUtils;
 
 import com.mordred.grocerylist.R;
@@ -11,6 +13,8 @@ import com.mordred.grocerylist.viewmodel.EditGroceryListViewModel;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,7 +29,7 @@ public class EditGroceryListFragment extends ViewGroceryListFragment {
 	private EditGroceryListViewModel viewModel;
 
 	private EditText editTextListName;
-	private EditText editTextProductName;
+	private AutoCompleteTextView editTextProductName;
 	private TextView textAmount;
 
 	public static EditGroceryListFragment newInstance() {
@@ -36,12 +40,12 @@ public class EditGroceryListFragment extends ViewGroceryListFragment {
 	protected void initLayout(View fragmentView) {
 		super.initLayout(fragmentView);
 
+		this.createAutocompleteProductNameTextView(fragmentView);
+
 		TextView textViewListName = fragmentView.findViewById(
 				R.id.fragEditGroceryList_textViewListName);
 		this.editTextListName = fragmentView.findViewById(
 				R.id.fragEditGroceryList_editTextListName);
-		this.editTextProductName = fragmentView.findViewById(
-				R.id.fragEditGroceryList_editTextProductName);
 		this.textAmount = fragmentView.findViewById(R.id.fragEditGroceryList_textAmount);
 		Button buttonIncrease = fragmentView.findViewById(R.id.fragEditGroceryList_buttonIncrease);
 		Button buttonDecrease = fragmentView.findViewById(R.id.fragEditGroceryList_buttonDecrease);
@@ -53,11 +57,24 @@ public class EditGroceryListFragment extends ViewGroceryListFragment {
 
 		textViewListName.setVisibility(View.GONE);
 		this.editTextListName.setVisibility(View.VISIBLE);
-		this.editTextProductName.setVisibility(View.VISIBLE);
 		this.textAmount.setVisibility(View.VISIBLE);
 		buttonIncrease.setVisibility(View.VISIBLE);
 		buttonDecrease.setVisibility(View.VISIBLE);
 		buttonAdd.setVisibility(View.VISIBLE);
+	}
+
+	private void createAutocompleteProductNameTextView(View fragmentView) {
+		this.editTextProductName = fragmentView.findViewById(
+				R.id.fragEditGroceryList_editTextProductName);
+
+		this.editTextProductName.setVisibility(View.VISIBLE);
+
+		ArrayAdapter<String> productNameAdapter = new ArrayAdapter<>(this.getActivity(),
+																	 R.layout.layout_autocomplete_text,
+																	 new ArrayList<>()
+		);
+
+		this.editTextProductName.setAdapter(productNameAdapter);
 	}
 
 	private void increaseAmount() {
@@ -141,6 +158,14 @@ public class EditGroceryListFragment extends ViewGroceryListFragment {
 								this.groceryItemAdapter.notifyDataSetChanged();
 						}
 		);
+
+		this.viewModel
+				.getGroceryItemNameList()
+				.observe(this.getViewLifecycleOwner(),
+						 groceryItemNames -> {
+								this.groceryItemNameAdapter.setData(groceryItemNames);
+								this.groceryItemNameAdapter.notifyDataSetChanged();
+						 });
 		//@formatter:off
 	}
 

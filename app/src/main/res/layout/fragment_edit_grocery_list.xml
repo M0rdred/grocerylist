@@ -20,7 +20,7 @@
 			android:layout_marginVertical="8dp"
 			android:hint="@string/list_name" />
 
-	<EditText
+	<AutoCompleteTextView
 			android:id="@+id/fragEditGroceryList_editTextProductName"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
